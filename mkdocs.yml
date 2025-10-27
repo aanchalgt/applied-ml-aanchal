@@ -7,10 +7,10 @@
 # TODO: Update site_author
 
 site_name: Applied ML Project
-site_url: https://denisecase.github.io/applied-ml-template/
-repo_url: https://github.com/denisecase/applied-ml-template
-site_description: Professional applied ML project
-site_author: Denise Case
+site_url: https://aanchalgt.github.io/applied-ml-aanchal/
+repo_url: https://github.com/aanchalgt/applied-ml-aanchal
+site_description: Applied ML Project
+site_author: Aanchal Gupta
 docs_dir: docs
 site_dir: site
 
