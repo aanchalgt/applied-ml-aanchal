@@ -1,141 +1,40 @@
 # applied-ml-aanchal
 
-## WORKFLOW 1. Set Up Machine
+# Diabetes Health Indicators Data Analysis
 
-## WORKFLOW 2. Set Up Project
+This project contains my analysis and proposed transformations for the [Diabetes Health Indicators Dataset](https://www.kaggle.com/datasets/mohankrishnathalla/diabetes-health-indicators-dataset) on Kaggle. The analysis focuses on examining feature distributions, handling missing values, and proposing useful transformations.
 
-After verifying your machine is set up, set up a new Python project.
 
-It includes the critical commands to set up your local environment (and activate it):
 
-```shell
-uv venv
-uv python pin 3.12
-uv sync --extra dev --extra docs --upgrade
-uv run pre-commit install
-uv run python --version
-```
+## Overview
 
-**Windows (PowerShell):**
-
-```shell
-.\.venv\Scripts\activate
-```
-
-**macOS / Linux / WSL:**
-
-```shell
-source .venv/bin/activate
-```
+Started by loading the dataset and reviewing its structure and columns. Then examined summary statistics and visualized histograms to understand the distribution of each feature. This allowed me to identify patterns, skewed distributions, and potential features that may require transformation.  
 
 ---
 
-## WORKFLOW 3. Daily Workflow
+## Target Variable
 
-Verify prior steps befor continuing.
+The target variable for this analysis is `diagnosed_diabetes`. There are no missing values in this column. The histogram shows a binary distribution, with a larger number of instances labeled `1` (diabetes) compared to `0` (no diabetes). This distribution provides a clear distinction between the two classes, which is useful for predictive modeling.  
 
-### 3.1 Git Pull from GitHub
-
-Always start with `git pull` to check for any changes made to the GitHub repo.
-
-```shell
-git pull
-```
-
-### 3.2 Run Checks as You Work
-
-This mirrors real work where we typically:
-
-1. Update dependencies (for security and compatibility).
-2. Clean unused cached packages to free space.
-3. Use `git add .` to stage all changes.
-4. Run ruff and fix minor issues.
-5. Update pre-commit periodically.
-6. Run pre-commit quality checks on all code files (**twice if needed**, the first pass may fix things).
-7. Run tests.
-
-In VS Code, open your repository, then open a terminal (Terminal / New Terminal) and run the following commands one at a time to check the code.
-
-```shell
-git pull
-uv sync --extra dev --extra docs --upgrade
-uv cache clean
-git add .
-uvx ruff check --fix
-uvx pre-commit autoupdate
-uv run pre-commit run --all-files
-git add .
-uv run pytest
-```
-
-NOTE: The second `git add .` ensures any automatic fixes made by Ruff or pre-commit are included before testing or committing.
-Running `uv run pre-commit run --all-files` twice may be helpful if the first time doesn't pass. 
-
-<details>
-<summary>Click to see a note on best practices</summary>
-
-`uvx` runs the latest version of a tool in an isolated cache, outside the virtual environment.
-This keeps the project light and simple, but behavior can change when the tool updates.
-For fully reproducible results, or when you need to use the local `.venv`, use `uv run` instead.
-
-</details>
-
-### 3.3 Build Project Documentation
-
-Make sure you have current doc dependencies, then build your docs, fix any errors, and serve them locally to test.
-
-```shell
-uv run mkdocs build --strict
-uv run mkdocs serve
-```
-
-- After running the serve command, the local URL of the docs will be provided. To open the site, press **CTRL and click** the provided link (at the same time) to view the documentation. On a Mac, use **CMD and click**.
-- Press **CTRL c** (at the same time) to stop the hosting process.
-
-### 3.4 Execute
-
-This project includes demo code.
-Run the demo Python modules to confirm everything is working.
-
-In VS Code terminal, run:
-
-```shell
-uv run python notebooks/project01/ml01.py
-```
-
-A new window with charts should appear. Close the window to finish the execution. 
-If this works, your project is ready! If not, check:
-
-- Are you in the right folder? (All terminal commands are to be run from the root project folder.)
-- Did you run the full `uv sync --extra dev --extra docs --upgrade` command?
-- Are there any error messages? (ask for help with the exact error)
-
-## Update this README as you work
-
-Add commands to run additional scripts as you work through the course (update the path and file name as needed).
-
+![Target Variable Histogram](notebooks\project02\1.png)  
 ---
 
-### 3.5 Git add-commit-push to GitHub
+## Input Feature
 
-Anytime we make working changes to code is a good time to git add-commit-push to GitHub.
+For this analysis, I focused on **BMI (Body Mass Index)** as an important input feature. There are no missing values in this column. The histogram of BMI shows an approximately normal (bell-shaped) distribution, with most values between 20 and 30 and a few extreme outliers.
 
-1. Stage your changes with git add.
-2. Commit your changes with a useful message in quotes.
-3. Push your work to GitHub.
+![Input Variable BMI Histogram](notebooks\project02\2.png)  
+---
 
-```shell
-git add .
-git commit -m "describe your change in quotes"
-git push -u origin main
-```
+## Proposed Transformation
 
-This will trigger the GitHub Actions workflow and publish your documentation via GitHub Pages.
+To enhance the analysis, I created a new feature called **BMI Category** by converting continuous BMI values into categories. This helps in identifying trends in diabetes prevalence across different BMI ranges and makes the dataset more interpretable. The BMI categories are:
 
-### 3.6 Modify and Debug
+- BMI < 18.5 → Underweight  
+- BMI 18.5–24.9 → Normal weight  
+- BMI 25–29.9 → Overweight  
+- BMI ≥ 30 → Obese  
 
-With a working version safe in GitHub, start making changes to the code.
+This transformation allows for easier visualization and analysis of the relationship between BMI and diabetes. 
 
-Before starting a new session, remember to do a `git pull` and keep your tools updated.
-
-Each time forward progress is made, remember to git add-commit-push.
+![Transformation Histogram](notebooks\project02\3.png)  
