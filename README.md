@@ -16,14 +16,14 @@ Started by loading the dataset and reviewing its structure and columns. Then exa
 
 The target variable for this analysis is `diagnosed_diabetes`. There are no missing values in this column. The histogram shows a binary distribution, with a larger number of instances labeled `1` (diabetes) compared to `0` (no diabetes). This distribution provides a clear distinction between the two classes, which is useful for predictive modeling.  
 
-![Target Variable Histogram](notebooks\project02\1.png)  
+![Target Variable Histogram](C:\Repos\applied-ml-aanchal\images\1.png)  
 ---
 
 ## Input Feature
 
 For this analysis, I focused on **BMI (Body Mass Index)** as an important input feature. There are no missing values in this column. The histogram of BMI shows an approximately normal (bell-shaped) distribution, with most values between 20 and 30 and a few extreme outliers.
 
-![Input Variable BMI Histogram](notebooks\project02\2.png)  
+![Input Variable BMI Histogram](C:\Repos\applied-ml-aanchal\images\2.png)  
 ---
 
 ## Proposed Transformation
@@ -37,4 +37,4 @@ To enhance the analysis, I created a new feature called **BMI Category** by conv
 
 This transformation allows for easier visualization and analysis of the relationship between BMI and diabetes. 
 
-![Transformation Histogram](notebooks\project02\3.png)  
+![Transformation Histogram](C:\Repos\applied-ml-aanchal\images\3.png)  
