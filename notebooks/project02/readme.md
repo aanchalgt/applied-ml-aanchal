@@ -67,10 +67,13 @@ StratifiedShuffleSplit to maintain the same survival proportion in training and 
 ## Reflections:
 
 -The dataset demonstrates how characteristics like class, gender, and age influence survival.
+
 **Challenges:**
 - Handling missing values (especially for age and deck) and converting categorical features into numeric values for modeling.
+
 **Notable observations:**
 Females and first-class passengers had higher survival rates, clearly shown in count plots and scatter plots.
+
 **Main takeaway:**
 Proper data cleaning and feature selection significantly impact model accuracy. 
 
