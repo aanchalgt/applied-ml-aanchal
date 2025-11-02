@@ -40,7 +40,7 @@ The dataset contains 891 passengers and 15 features, including:
 - Histograms for age distribution
 - Scatter matrix for numeric features
 
-**Insights from visuals:**
+Insights from visuals:
 - First-class passengers had higher survival rates
 - Females were more likely to survive than males
 - Younger passengers were often in lower classes
